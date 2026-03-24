@@ -6,5 +6,5 @@
     // OneTab extension page URL
     "onetab_url": "chrome-extension://you_url/onetab.html",
     // Output markdown file path (relative to this config file's directory, or absolute)
-    "output_md": "kuaipan_onetab\\onetab_export.md"
+    "output_md": "the_folder_you_want_to_save\\onetab_export.md"
 }
