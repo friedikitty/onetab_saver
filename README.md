@@ -1,14 +1,33 @@
 # OneTab Saver
 
-Automatically extract all saved tabs from the Chrome [OneTab](https://www.one-tab.com/) extension and export them to a clean Markdown file. Supports incremental merge with deduplication by URL.
+Automatically extract all saved tabs from the Chrome [OneTab](https://chromewebstore.google.com/detail/onetab/chphlpgkkbolifaimnlloiipkdnihall?hl=en&pli=1) extension and export them to a clean Markdown file. Supports incremental merge with deduplication by URL.
 
 ## Usage
 
-Double-click `run.bat`, or from the command line:
+* copy `config.json5` to `config.user.json5`, fill it correctly
+
+```json
+{
+    // Path to Chrome user data directory
+    "chrome_user_data_dir": "C:\\Users\\youname\\AppData\\Local\\Google\\Chrome\\User Data",
+    // Chrome profile directory name (e.g. "Default", "Profile 1")
+    "chrome_profile": "Default",
+    // OneTab extension page URL
+    "onetab_url": "chrome-extension://you_url/onetab.html",
+    // Output markdown file path (relative to this config file's directory, or absolute)
+    "output_md": "the_folder_you_want_to_save\\onetab_export.md"
+}
+```
+
+* Double-click `run.bat`, or from the command line:
 
 ```bash
 run.bat
 ```
+
+* `output_md` you can set to a folder with apples' cloud drive or onedrive or anything that automatically sync to the cloud, then you get the onetab sync.
+
+    you can use your openclaw or simple system schedule to make this become a repeat task
 
 ## How It Works
 
