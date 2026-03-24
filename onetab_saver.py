@@ -15,10 +15,31 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 CONFIG_PATH = SCRIPT_DIR / "config.json5"
 
 
+def _deep_merge(base: dict, override: dict) -> dict:
+    """Recursively merge two dicts; values from override take precedence."""
+    result = dict(base)
+    for key, value in override.items():
+        if key in result and isinstance(result[key], dict) and isinstance(value, dict):
+            result[key] = _deep_merge(result[key], value)
+        else:
+            result[key] = value
+    return result
+
+
 def load_config() -> dict:
-    """Load configuration from config.json5."""
+    """Load configuration from config.json5 and merge with config.user.json5 (user config has higher priority)."""
+    # 1. Load base config from config.json5
     with open(CONFIG_PATH, encoding="utf-8") as f:
         cfg = json5.load(f)
+
+    # 2. If config.user.json5 exists, load and merge (user config overrides base)
+    user_config_path = SCRIPT_DIR / "config.user.json5"
+    if user_config_path.exists():
+        with user_config_path.open(encoding="utf-8") as f:
+            user_cfg = json5.load(f)
+        # Recursively merge dicts; user config values take precedence
+        cfg = _deep_merge(cfg, user_cfg)
+
     # Resolve output_md relative to script dir if not absolute
     md_path = Path(cfg["output_md"])
     if not md_path.is_absolute():
