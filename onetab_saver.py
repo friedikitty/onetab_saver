@@ -1,4 +1,4 @@
-"""OneTab Saver — Extract tabs from OneTab Chrome extension and save to Markdown."""
+"""OneTab Saver - Extract tabs from OneTab Chrome extension and save to Markdown."""
 
 from __future__ import annotations
 
