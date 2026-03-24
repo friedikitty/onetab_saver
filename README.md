@@ -18,11 +18,11 @@ The core challenge is that OneTab stores its data inside a `chrome-extension://`
 
 Chrome locks its user data directory while running, so we can't use it directly. Instead, the tool creates a **minimal temp profile** by copying only the files OneTab needs:
 
-- `Local Extension Settings/<ext_id>/` — OneTab's LevelDB storage (the actual saved tabs)
-- `IndexedDB/chrome-extension_<ext_id>_*/` — alternative storage location
-- `Local Storage/leveldb/` — extension local storage
-- `Preferences` / `Secure Preferences` — extension registration
-- `Local State` — Chrome launch requirement
+- `Local Extension Settings/<ext_id>/` - OneTab's LevelDB storage (the actual saved tabs)
+- `IndexedDB/chrome-extension_<ext_id>_*/` - alternative storage location
+- `Local Storage/leveldb/` - extension local storage
+- `Preferences` / `Secure Preferences` - extension registration
+- `Local State` - Chrome launch requirement
 
 This is much faster than copying the entire profile (~seconds vs minutes).
 
@@ -30,10 +30,10 @@ This is much faster than copying the entire profile (~seconds vs minutes).
 
 The tool uses **Playwright's bundled Chromium** (not system Chrome) to avoid conflicts with any running Chrome instance. Key flags:
 
-- `--load-extension=<path>` — loads the real OneTab extension from the system install
-- `--disable-extensions-except=<path>` — prevents other extensions from loading
-- `ignore_default_args=["--disable-extensions"]` — overrides Playwright's default which disables all extensions
-- `headless=False` — required because Chrome extensions don't work in headless mode
+- `--load-extension=<path>` - loads the real OneTab extension from the system install
+- `--disable-extensions-except=<path>` - prevents other extensions from loading
+- `ignore_default_args=["--disable-extensions"]` - overrides Playwright's default which disables all extensions
+- `headless=False` - required because Chrome extensions don't work in headless mode
 
 The browser navigates to `chrome-extension://chphlpgkkbolifaimnlloiipkdnihall/onetab.html` and waits for the content to render.
 
@@ -43,11 +43,11 @@ OneTab's page structure:
 
 ```
 div#contentAreaDiv
-  └── div.tabGroup[data-id="root"]     ← header group (skipped)
-  └── div.tabGroup[data-id="..."]      ← one per saved session
-        ├── div (date text: "3/20/2026 6:51:58 PM - 4 days ago")
-        └── div.tab[data-id="..."]      ← one per saved tab
-              └── a.tabLink[href="..."]   ← the actual link + title
+  +-- div.tabGroup[data-id="root"]     <- header group (skipped)
+  +-- div.tabGroup[data-id="..."]      <- one per saved session
+        +-- div (date text: "3/20/2026 6:51:58 PM - 4 days ago")
+        \-- div.tab[data-id="..."]      <- one per saved tab
+              \-- a.tabLink[href="..."]   <- the actual link + title
 ```
 
 The parser:
@@ -67,7 +67,7 @@ When the output `.md` already exists, the tool:
 3. Date groups unique to either side are included as-is
 4. Writes the merged result back
 
-This makes the tool safe to run repeatedly — it never creates duplicate entries.
+This makes the tool safe to run repeatedly - it never creates duplicate entries.
 
 ## Configuration
 
@@ -101,7 +101,7 @@ Edit `config.json5`:
 
 ## Dependencies
 
-- `playwright` — browser automation
-- `beautifulsoup4` — HTML parsing
-- `json5` — config file with comments support
+- `playwright` - browser automation
+- `beautifulsoup4` - HTML parsing
+- `json5` - config file with comments support
 
