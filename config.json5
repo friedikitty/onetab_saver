@@ -1,0 +1,10 @@
+{
+    // Path to Chrome user data directory
+    "chrome_user_data_dir": "C:\\Users\\youname\\AppData\\Local\\Google\\Chrome\\User Data",
+    // Chrome profile directory name (e.g. "Default", "Profile 1")
+    "chrome_profile": "Default",
+    // OneTab extension page URL
+    "onetab_url": "chrome-extension://you_url/onetab.html",
+    // Output markdown file path (relative to this config file's directory, or absolute)
+    "output_md": "kuaipan_onetab\\onetab_export.md"
+}
