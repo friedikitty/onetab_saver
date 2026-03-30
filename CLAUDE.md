@@ -10,10 +10,10 @@ OneTab Saver extracts saved tabs from the Chrome OneTab extension and exports th
 
 ```bash
 # Windows (from repo root)
-uv run python -m onetab_saver.onetab_saver
+uv run python .\onetab_saver.py
 
 # Or use the batch file
-cd onetab_saver && run.bat
+run.bat
 ```
 
 ## Architecture

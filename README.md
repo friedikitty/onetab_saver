@@ -25,6 +25,12 @@ Automatically extract all saved tabs from the Chrome [OneTab](https://chromewebs
 run.bat
 ```
 
+* Or run directly with `uv`:
+
+```bash
+uv run python .\onetab_saver.py
+```
+
 * `output_md` you can set to a folder with apples' cloud drive or onedrive or anything that automatically sync to the cloud, then you get the onetab sync.
 
     you can use your openclaw or simple system schedule to make this become a repeat task
