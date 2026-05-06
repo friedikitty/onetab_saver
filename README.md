@@ -19,6 +19,12 @@ Automatically extract all saved tabs from the Chrome [OneTab](https://chromewebs
 }
 ```
 
+* Install Playwright's bundled Chromium (first-time setup, or after updating playwright):
+
+```bash
+uv run playwright install chromium
+```
+
 * Double-click `run.bat`, or from the command line:
 
 ```bash
