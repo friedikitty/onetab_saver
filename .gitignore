@@ -1,3 +1,8 @@
 /kuaipan_onetab
 onetab_export-backup.md
 /config.user.json5
+
+# Agent/runtime junk
+/.claude/omo/
+/.temp/
+*.egg-info/
